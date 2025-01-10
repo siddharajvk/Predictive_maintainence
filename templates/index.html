@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asset Condition Analysis</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Asset Condition Analysis</h1>
+        
+        <div class="upload-section">
+            <div class="file-input-wrapper">
+                <input type="file" id="imageInput" accept="image/*">
+                <label for="imageInput" class="file-input-label">Choose Image</label>
+            </div>
+            <input type="number" id="feature1" placeholder="Enter Age" class="input-box">
+            <input type="number" id="feature2" placeholder="Enter KM" class="input-box">
+            <button onclick="detectObjects()" class="detect-button">Analyze Image</button>
+        </div>
+        
+        <div class="result-container">
+            <div class="image-section">
+                <canvas id="outputCanvas"></canvas>
+            </div>
+            
+            <div class="analysis-section">
+                <div class="detection-stats">
+                    <h2>Detection Statistics</h2>
+                    <div id="classCountsContainer"></div>
+                </div>
+                
+                <div class="prediction-result">
+                    <h2>Predicted Replacement Timeline</h2>
+                    <div class="years-box">
+                        <span>Estimated Years until Replacement:</span>
+                        <span id="yearsValue" class="years-value">-</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="loading" class="loading hidden">
+            <div class="spinner"></div>
+            <span>Analyzing image...</span>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
